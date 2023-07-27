@@ -48,7 +48,7 @@ void not_found(char *argv0, char *cmd0, int cmd_counter, garbage **head);
 void print_number(int n);
 char *return_integer(int n);
 void null_env(void);
-int main(int ac, char **av);
+
 /* String Handlers */
 int _strlen(char *str);
 int _strncmp(char *s1, char *s2, int n);
@@ -62,7 +62,7 @@ int getpathfile(char **args);
 void shb_env(void);
 int shb_exit(char **args, char *buffer, int loops);
 void shb_cd(char **args);
-
+int main(int ac, char **av, char **env);
 void free_function(int n, ...);
 int _isdigit(char *number);
 
