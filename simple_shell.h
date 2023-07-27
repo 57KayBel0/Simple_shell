@@ -3,7 +3,10 @@
 #define IP_SIZE 0
 #define SH_KILLER "exit\n"
 #define DELIMITER "=: \n\t"
-#define MAX_PATH 260 // Replace with the appropriate value for your platform
+#define MAX_PATH 260 /* Replace with the appropriate value for your platform*/
+#define MAX_ALIAS_COUNT 100
+#define MAX_ALIAS_NAME_LENGTH 50
+#define MAX_ALIAS_VALUE_LENGTH 100
 
 #include <stdio.h>
 #include <unistd.h>
@@ -19,6 +22,16 @@
 #include <sys/types.h>
 #include "list.h"
 #include <Windows.h>
+
+/* Structure to store an alias*/
+struct Alias {
+    char name[MAX_ALIAS_NAME_LENGTH];
+    char value[MAX_ALIAS_VALUE_LENGTH];
+};
+
+/* Array to store aliases*/
+struct Alias aliases[MAX_ALIAS_COUNT];
+	int alias_count = 0;
 
 extern char **environ;
 /**
