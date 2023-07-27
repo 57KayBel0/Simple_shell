@@ -1,5 +1,5 @@
 #include "simple_shell.h"
-
+#include "list.h"
 /**
  * _myhistory - displays the history list, one command by line preceded
  *              with line nums, starting at 0.
@@ -7,9 +7,9 @@
  *        constant function prototype.
  *  Return: Always 0
  */
-int _myhistory(info_t *info)
+int _myhistory(ino_t *info)
 {
-	print_list(info->history);
+	print_listint(info->history);
 	return (0);
 }
 
@@ -20,12 +20,12 @@ int _myhistory(info_t *info)
  *
  * Return: Always 0 on success, 1 on error
  */
-int unset_alias(info_t *info, char *str)
+int unset_alias(ino_t *info, char *str)
 {
 	char *p, c;
 	int ret;
 
-	p = _strchr(str, '=');
+	p = strchr(str, '=');
 	if (!p)
 		return (1);
 	c = *p;
@@ -43,18 +43,18 @@ int unset_alias(info_t *info, char *str)
  *
  * Return: Always 0 on success, 1 on error
  */
-int set_alias(info_t *info, char *str)
+int set_alias(ino_t *info, char *str)
 {
 	char *p;
 
-	p = _strchr(str, '=');
+	p = strchr(str, '=');
 	if (!p)
 		return (1);
 	if (!*++p)
 		return (unset_alias(info, str));
 
 	unset_alias(info, str);
-	return (add_node_end(&(info->alias), str, 0) == NULL);
+	return (add_nodeint_end(&(info->alias), str, 0) == NULL);
 }
 
 /**
@@ -86,9 +86,10 @@ int print_alias(list_t *node)
  *          constant function prototype.
  *  Return: Always 0
  */
-int _myalias(info_t *info)
+int _myalias(ino_t *info)
 {
 	int i = 0;
+	int argc;
 	char *p = NULL;
 	list_t *node = NULL;
 
@@ -97,7 +98,7 @@ int _myalias(info_t *info)
 		node = info->alias;
 		while (node)
 		{
-			print_alias(node);
+			set_alias(list_t *node);
 			node = node->next;
 		}
 		return (0);
@@ -108,7 +109,7 @@ int _myalias(info_t *info)
 		if (p)
 			set_alias(info, info->argv[i]);
 		else
-			print_alias(node_starts_with(info->alias, info->argv[i], '='));
+			set_alias(node_starts_with(info->alias, info->argv[i], '='));
 	}
 	return (0);
 }

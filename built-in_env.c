@@ -12,7 +12,7 @@ int handle_env_builtin(void)
 	while (environ[i] != NULL)
 	{
 		printf("%s\n", environ[i]);
-      		i++;
+		i++;
 	}
 	return (0);
 }

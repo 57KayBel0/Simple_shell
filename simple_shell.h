@@ -3,6 +3,7 @@
 #define IP_SIZE 0
 #define SH_KILLER "exit\n"
 #define DELIMITER "=: \n\t"
+#define MAX_PATH 260 // Replace with the appropriate value for your platform
 
 #include <stdio.h>
 #include <unistd.h>
@@ -16,6 +17,8 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include "list.h"
+#include <Windows.h>
 
 extern char **environ;
 /**
@@ -29,6 +32,7 @@ typedef struct garbage
         struct garbage *next;
 } garbage;
 garbage *add_nodeint_end(garbage **head, void *trash);
+int print_alias(list_t *node)
 void print_listint(garbage *h);
 void free_list(garbage *head);
 int _strcmp(char *s1, char *s2);
@@ -48,7 +52,8 @@ void not_found(char *argv0, char *cmd0, int cmd_counter, garbage **head);
 void print_number(int n);
 char *return_integer(int n);
 void null_env(void);
-
+extern char *strdup (const char *__s);
+int main(int ac, char **av, char **env);
 /* String Handlers */
 int _strlen(char *str);
 int _strncmp(char *s1, char *s2, int n);
@@ -65,8 +70,8 @@ void shb_cd(char **args);
 int main(int ac, char **av, char **env);
 void free_function(int n, ...);
 int _isdigit(char *number);
-
-
+/*initialized to zero */
+char lastdir[MAX_PATH];
 
 int execute(char **args);
 
