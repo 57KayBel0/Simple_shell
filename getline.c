@@ -1,5 +1,5 @@
 #include "simple_shell.h"
-
+#include <stdlib.h>
 /**
  * _getline - gets a line from fd or std input
  * @lineptr: buffer to fill line 
@@ -11,7 +11,7 @@ int _getline(char **lineptr, int fd)
 	int size = 1025;
 	int old_size = 0;
 	int r = 1;
-	line sum = 0;
+	int sum = 0;
 	static char buffer[1025];
 	static int begin;
 	static int end;
@@ -54,7 +54,7 @@ int _getline(char **lineptr, int fd)
 				buffer[0] = 0;
 				return (sum);
 			}
-			buffer[sum] = o;
+			buffer[sum] = 0;
 			sum = 0;
 		}
 		for (; buffer[begin]; begin++)
@@ -64,7 +64,7 @@ int _getline(char **lineptr, int fd)
 				break;
 			}
 			/*printf("beginning for\n");//debug check*/
-			if (buffer[begin] == '\n');
+			if (buffer[begin] == '\n')
 
 			{
 				(*lineptr)[c] = '\n';
