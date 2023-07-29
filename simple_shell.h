@@ -4,7 +4,11 @@
 #define BUFFSIZE 64
 #define DELIMITER " \t\r\n\a"
 #define  _GNU_SOURCE
-
+#ifdef __GNUC__
+#  define UNUSED(x) UNUSED_ ## x __attribute__((__unused__))
+#else
+#  define UNUSED(x) UNUSED_ ## x
+#endif
 #include <stdarg.h>
 #include <signal.h>
 #include <stdio.h>
