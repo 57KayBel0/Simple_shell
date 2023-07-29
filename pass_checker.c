@@ -1,5 +1,4 @@
 #include "simple_shell.h"
-
 /**
  * main - Creates a loop for to receive user call functions, parse the input
  * and check program type to execute a program file if success
@@ -35,10 +34,10 @@ int main(int argc, char **argv)
 		if (args != NULL && args[0] != NULL)
 		{
 			if (init_builtin(args, buffer, loops))
-				continue;
+			continue;
 
 			if (init_fileprogram(args) == -1)
-				errmess(argv, args, loops);
+			errmess(argv, args, loops);
 		}
 		free_function(1, buffer);
 		free_function(2, args);
