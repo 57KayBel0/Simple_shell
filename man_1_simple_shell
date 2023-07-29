@@ -1,0 +1,131 @@
+.TH Simple Shell 1 "28 July 2023" "version 1.0" "simple_shell man page"
+
+.SH NAME
+.B hsh
+- A simple command interpreter (simple_shell)
+
+.SH SYNOPSIS
+.B ./hsh [options] [command_string | file]
+
+.SH DESCRIPTION
+.LP
+.B hsh
+is an sh-compatible command language interpreter that reads and executes commands
+from the standard input or from a file. It is conformed with the POSIX 1003.2 and 
+1003.2a specifications for the shell. This shell is based on the original UNIX shell. 
+It was developed with Ubuntu 14.04 LTS and compiled with GCC 5.4.1. This man page
+isn´t tutorial of the Shell, is a document is a document that supports the user 
+on some shell features.
+.LP
+
+.SH OVERVIEW
+The shell is a command that reads lines for either a file or the terminal,
+interprets them, and generally executes other commands.
+
+.SS Invocation
+.B hsh
+is invoked by the command:
+.br
+$./hsh
+.LP
+A prompt will appear for the user to enter and execute commands by typing 
+command names and pressing the return key. A user can also pipe commands into 
+the program via the pipe character '|'. For example:
+.br
+\&$ echo "hello world" | ./hsh
+
+.SH INSTALLATION
+.I To install:
+.br
+
+.B git clone https://github.com/57KayBel0/simple_shell.git
+.br
+
+.I Compile files using:
+.br
+
+.B gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+.br
+.br
+
+A prompt will appear for the user to enter and execute commands by typing 
+command names and pressing the return key. A user can also pipe commands 
+into the program via the pipe character '|'. For example:
+$ echo "hello world" | ./hsh
+
+.SH BUILT-INS
+.PP
+init_builtin - Init built-in functions.
+.PP
+shb_exit - Function that exits the Simple Shell.
+.PP
+shb_env - Prints the global environment variable.
+.PP
+shb_cd - Change directory according argument.
+.PP
+sighandle - This program allows ctrl+C to be printed and new line with enter is pressed.
+
+.SH EXAMPLES
+.PP
+1. List files in alphabetical order:
+.PP
+$ ./hsh
+.br
+$ ls -l
+.br
+total 80
+-rw-r--r-- 1 root root   219 Jul 28 23:44 AUTHORS
+.br
+-rw-r--r-- 1 root root  2546 Jul 28 15:46 built-in_exit.c
+.br
+-rw-r--r-- 1 root root   501 Jul 28 15:50 execute.c
+.br
+-rw-r--r-- 1 root root   559 Jul 28 15:51 freeall.c
+.br
+-rw-r--r-- 1 root root   409 Jul 28 15:52 getenv.c
+.br
+-rw-r--r-- 1 root root  1306 Jul 28 15:48 handle-errors.c
+.br
+-rw-r--r-- 1 root root   824 Jul 28 15:55 handle-pathappend.c
+.br
+-rwxr-xr-x 1 root root 22840 Jul 28 19:22 hsh
+.br
+-rw-r--r-- 1 root root   972 Jul 28 15:53 pass_checker.c
+.br
+-rw-r--r-- 1 root root    13 Jul 26 13:38 README.md
+.br
+-rw-r--r-- 1 root root  1264 Jul 28 15:56 searchint.c
+.br
+-rw-r--r-- 1 root root   961 Jul 28 15:57 searchpathfile.c
+.br
+-rw-r--r-- 1 root root  1393 Jul 28 19:12 simple_shell.h
+.br
+-rw-r--r-- 1 root root  1300 Jul 28 15:58 splitarguments.c
+.br
+-rw-r--r-- 1 root root  2160 Jul 28 15:59 str_handler.c
+.br
+.SS
+.SS --------------
+.SS
+.SS
+2. print the current working directory and set a new line that waits for the next command:
+.PP
+$ ./hsh
+.br
+$ pwd
+/home/vagrant/simple_shell
+$
+
+.SH SEE ALSO
+bash(1)
+
+.SH HISTORY
+.B hsh
+is based on the Thompson Shell program written by Ken Thompson.
+
+.SH BUGS
+No known bugs. If any further bugs are found 
+please contact the authors.
+
+.SH AUTHORS
+Lerato Malatjie , Kabelo Makgae.
